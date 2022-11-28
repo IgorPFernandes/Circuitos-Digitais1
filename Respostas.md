@@ -98,6 +98,19 @@ module exor4x1(a,b,s);
 
 endmodule
 
+<br>
+module mux(a,b,sel,y);
+<br>
+  intput a,b,sel;
+  <br>
+  output y;
+  <br>
+
+  assign y = sel ? a:b;
+  <br>
+
+endmodule
+
 module circ(op,a,dado,s,sel);
 <br>
 input [3:0] a,dado;
@@ -105,6 +118,16 @@ input [3:0] a,dado;
 input [2:0] op;
 <br>
 output [3:0] s;
+<br>
+wire exor4x1,or4x1,and4x1,subtracao4x1,soma4x1,m1,m2,m3;
+<br>
+mux(soma4x1,subtracao4x1,op,m1);
+<br>
+mux(and4x1,or4x1,op,m2);
+<br>
+mux(m1,m2,op,m3);
+<br>
+mux(exor4x1,m3,op,s);
 <br>
 
 
